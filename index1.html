@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cashifyo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Cashifyo</h1>
+
+  <div class="grid">
+    <div class="card" onclick="openPopup('profit')">💰<br>Your Total Profit</div>
+    <div class="card" onclick="openPopup('wallet')">👛<br>Wallet</div>
+    <div class="card banner">🪧<br>Ads Banner</div>
+    <div class="card" onclick="openPopup('ads')">📢<br>Total Ads</div>
+    <div class="card" onclick="openPopup('points')">💵<br>Total Points = ₹</div>
+    <div class="card" onclick="openPopup('scratch')">🎁<br>Scratch Card</div>
+    <div class="card" onclick="openPopup('products')">📦<br>Products</div>
+    <div class="card" onclick="openPopup('offer')">🏷️<br>Offer</div>
+  </div>
+
+  <div class="bottom-nav">
+    <button onclick="openPopup('home')">🏠<br>Home</button>
+    <button onclick="openPopup('team')">👥<br>Team</button>
+    <button onclick="openPopup('profile')">👤<br>Profile</button>
+  </div>
+
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <button class="close" onclick="closePopup()">✖</button>
+      <div id="popupText">Loading...</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
