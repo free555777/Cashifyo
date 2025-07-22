@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cashifyo App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f0f0;
+    }
+    .header {
+      background: #333;
+      color: white;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header h1 {
+      font-size: 18px;
+    }
+    .main {
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: space-around;
+      border-top: 1px solid #ccc;
+    }
+    .bottom-nav button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: none;
+      font-size: 16px;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    .popup-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+    .popup-content h2 {
+      color: green;
+    }
+    .popup-content .ref-code {
+      background: #e0ffe0;
+      padding: 10px;
+      border-radius: 10px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .popup-content button {
+      background: #28a745;
+      color: white;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    .popup-content .help {
+      text-align: right;
+      color: #007bff;
+      font-size: 14px;
+    }
+    .popup-content input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Cashifyo</h1>
+    <div class="wallet">Wallet</div>
+  </div>
+
+  <div class="main">
+    <div class="card">Your Total Profit<br>₹ 0000</div>
+    <div class="card">Ads Banner<br><img src="ads.jpg" alt="ads" style="width:100%"></div>
+    <div class="card" id="offer">Offer</div>
+  </div>
+
+  <div class="bottom-nav">
+    <button onclick="closePopup()">Home</button>
+    <button onclick="openPopup()">Team</button>
+    <button>Profile</button>
+  </div>
+
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <div class="help">Help</div>
+      <h2>Refer & Earn ₹150</h2>
+      <p>Invite your friends & earn money!<br><small>Share your code with friends. When they join, you earn ₹150 instantly.</small></p>
+      <div class="ref-code" id="referralCode">ABC123</div>
+      <button onclick="copyReferralCode()">Copy Code</button>
+      <button onclick="shareNow()">Share Now</button>
+      <hr>
+      <p><strong>New user?</strong> Enter referral code below:</p>
+      <input type="text" placeholder="Enter Referral Code">
+      <button>Apply Code</button>
+      <button onclick="closePopup()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    function openPopup() {
+      document.getElementById("popup").style.display = "flex";
+    }
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+    function copyReferralCode() {
+      const code = document.getElementById("referralCode").innerText;
+      navigator.clipboard.writeText(code);
+      alert("Referral code copied: " + code);
+    }
+    function shareNow() {
+      const shareData = {
+        title: 'Cashifyo App',
+        text: 'Join me on Cashifyo & earn ₹150 using my referral code ABC123!',
+        url: window.location.href
+      };
+      if (navigator.share) {
+        navigator.share(shareData);
+      } else {
+        alert("Share not supported on this browser");
+      }
+    }
+  </script>
+</body>
+</html>

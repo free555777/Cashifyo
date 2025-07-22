@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Withdraw Money - Cashifyo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #f1fff4;
+    }
+
+    header {
+      background: white;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .back-btn {
+      font-size: 22px;
+      color: #2e7d32;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 20px;
+      color: #2e7d32;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    label {
+      display: block;
+      margin-top: 16px;
+      color: #2e7d32;
+      font-weight: 500;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .amount-buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 10px;
+    }
+
+    .amount-btn {
+      background: #e0ffe3;
+      color: #2e7d32;
+      padding: 10px 20px;
+      border-radius: 20px;
+      border: 1px solid #2e7d32;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .amount-btn:hover {
+      background: #c8facc;
+    }
+
+    button.confirm {
+      margin-top: 30px;
+      width: 100%;
+      background: #2e7d32;
+      color: white;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button.confirm:hover {
+      background: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="back-btn" onclick="goBack()">←</div>
+    <h2>Cashifyo</h2>
+  </header>
+
+  <!-- Main Form -->
+  <div class="container">
+    <div class="card">
+      <label for="amount">Amount (INR)</label>
+      <input type="number" id="amount" placeholder="₹ 0" />
+
+      <div class="amount-buttons">
+        <div class="amount-btn" onclick="setAmount(100)">₹100</div>
+        <div class="amount-btn" onclick="setAmount(200)">₹200</div>
+        <div class="amount-btn" onclick="setAmount(500)">₹500</div>
+      </div>
+
+      <label for="upi">UPI ID</label>
+      <input type="text" id="upi" placeholder="example@upi" />
+
+      <label for="account">Bank Account No.</label>
+      <input type="text" id="account" placeholder="1234567890" />
+
+      <label for="ifsc">IFSC Code</label>
+      <input type="text" id="ifsc" placeholder="SBIN0001234" />
+
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" placeholder="Your Name" />
+
+      <button class="confirm" onclick="confirmWithdraw()">Confirm</button>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function setAmount(val) {
+      document.getElementById('amount').value = val;
+    }
+
+    function confirmWithdraw() {
+      const amount = document.getElementById('amount').value;
+      const upi = document.getElementById('upi').value;
+      const acc = document.getElementById('account').value;
+      const ifsc = document.getElementById('ifsc').value;
+      const name = document.getElementById('fullname').value;
+
+      if (!amount || !upi || !acc || !ifsc || !name) {
+        alert("Please fill all fields.");
+        return;
+      }
+
+      alert("Money Transferred!\nAmount: ₹" + amount);
+    }
+
+    function goBack() {
+      alert("Back to Profile Page");
+      // window.location.href = 'profile.html'; // Uncomment in real app
+    }
+  </script>
+
+</body>
+</html>

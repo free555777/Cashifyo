@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cashifyo - Home</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #008000;
+    }
+
+    .app-header {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background: linear-gradient(to right, #008000, #008000);
+      color: #CCFFCC;
+      align-items: center;
+    }
+
+    .app-header .menu, .app-header .search {
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .profit-section {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px;
+      background: #CCFFCC;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .wallet-btn {
+      background: #0F4D0F;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 12px;
+      font-size: 14px;
+    }
+
+    .ads-banner {
+      margin: 10px;
+      overflow: hidden;
+    }
+
+    .carousel img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .grid-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      padding: 12px;
+    }
+
+    .grid-item {
+      background: linear-gradient(145deg, #fff, #fff);
+      box-shadow: 4px 4px 12px #ccc, -4px -4px 12px #fff;
+      border-radius: 20px;
+      text-align: center;
+      padding: 15px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .grid-item:hover {
+      transform: scale(1.05);
+    }
+
+    .grid-item img {
+      width: 40px;
+      margin-bottom: 10px;
+    }
+
+    .grid-item.wide {
+      grid-column: span 2;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      background: #fff;
+      box-shadow: 0 -1px 5px rgba(0,0,0,0.2);
+      padding: 10px 0;
+    }
+
+    .bottom-nav div {
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.4);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      width: 80%;
+    }
+
+    .close-btn {
+      float: right;
+      font-size: 22px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="menu">&#9776;</div>
+    <h1>Cashifyo</h1>
+    <div class="search">&#128269;</div>
+  </header>
+
+  <!-- Total Profit Section -->
+  <section class="profit-section">
+    <div class="profit-info">
+      <span>Your Total Profit</span>
+      <h2>₹ 0.00</h2>
+    </div>
+    <button class="wallet-btn">Wallet</button>
+  </section>
+
+  <!-- Ads Banner -->
+  <section class="ads-banner">
+    <div class="carousel">
+      <img src="https://via.placeholder.com/300x100?text=Ad+1" alt="Ad 1" />
+    </div>
+  </section>
+
+  <!-- Grid Buttons -->
+  <section class="grid-buttons">
+    <div class="grid-item" onclick="showPopup('Total Ads')">
+      <img src="https://img.icons8.com/ios-filled/50/ads.png" alt="ads"/>
+      <p>Total Ads</p>
+    </div>
+    <div class="grid-item" onclick="showPopup('Points = INR')">
+      <img src="https://img.icons8.com/ios-filled/50/rupee.png" alt="rupee"/>
+      <p>Total Points = INR</p>
+    </div>
+    <div class="grid-item wide" onclick="showPopup('Scratch Card')">
+      <img src="https://img.icons8.com/ios-filled/50/scratchcard.png" alt="scratch"/>
+      <p>Scratch Card</p>
+    </div>
+    <div class="grid-item" onclick="showPopup('Products')">
+      <img src="https://img.icons8.com/ios-filled/50/product.png" alt="product"/>
+      <p>Products</p>
+    </div>
+    <div class="grid-item" onclick="showPopup('Offers')">
+      <img src="https://img.icons8.com/ios-filled/50/discount.png" alt="offer"/>
+      <p>Subscription Offer</p>
+    </div>
+  </section>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <div>🏠<p>Home</p></div>
+    <div>👥<p>Team</p></div>
+    <div>👤<p>Profile</p></div>
+  </nav>
+
+  <!-- Popup -->
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <span onclick="hidePopup()" class="close-btn">&times;</span>
+      <p id="popup-text">Popup Content</p>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    function showPopup(content) {
+      document.getElementById('popup-text').innerText = content;
+      document.getElementById('popup').style.display = 'flex';
+    }
+
+    function hidePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cashifyo - Login & Signup</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background-color: #aaf5cf;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo img {
+      width: 60px;
+    }
+
+    .logo h1 {
+      font-size: 26px;
+      font-weight: bold;
+      margin-top: 10px;
+      color: #333;
+    }
+
+    .logo p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-size: 14px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      color: #444;
+    }
+
+    input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      margin: 10px 0;
+    }
+
+    .options a {
+      color: #00b56e;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(145deg, #00c77c, #00a962);
+      color: white;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .switch-link {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .switch-link a {
+      color: #00b56e;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Forgot Password Popup */
+    .forgot-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      width: 90%;
+      max-width: 350px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+      z-index: 999;
+      display: none;
+    }
+
+    .forgot-popup h3 {
+      text-align: center;
+      color: #00b56e;
+      margin-bottom: 15px;
+    }
+
+    .forgot-popup input {
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 15px;
+      box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .forgot-popup button {
+      width: 100%;
+      margin-top: 15px;
+      background: linear-gradient(145deg, #00c77c, #00a962);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      display: none;
+      z-index: 998;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="App Logo" />
+      <h1>Cashifyo</h1>
+      <p>Start earning money today!</p>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm">
+      <label>Email, Phone or Username</label>
+      <input type="text" required />
+
+      <label>Password</label>
+      <input type="password" required />
+
+      <div class="options">
+        <label><input type="checkbox" /> Remember me</label>
+        <a onclick="openForgotPopup()">Forgot Password?</a>
+      </div>
+
+      <button type="submit">Login</button>
+
+      <div class="switch-link">
+        Don't have an account? <a onclick="toggleForm('signup')">Sign Up</a>
+      </div>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="signupForm" class="hidden">
+      <label>Full Name</label>
+      <input type="text" required />
+
+      <label>Mobile Number</label>
+      <input type="tel" required />
+
+      <label>Email</label>
+      <input type="email" required />
+
+      <label>OTP</label>
+      <input type="number" required />
+
+      <label>Password</label>
+      <input type="password" required />
+
+      <label>Confirm Password</label>
+      <input type="password" required />
+
+      <button type="submit">Sign Up</button>
+
+      <div class="switch-link">
+        Already have an account? <a onclick="toggleForm('login')">Login</a>
+      </div>
+    </form>
+  </div>
+
+  <!-- Forgot Password Popup -->
+  <div class="overlay" id="overlay"></div>
+  <div class="forgot-popup" id="forgotPopup">
+    <h3>Reset Password</h3>
+    <input type="tel" placeholder="Enter Mobile Number" />
+    <input type="text" placeholder="Enter OTP" />
+    <button onclick="getOTP()">Get OTP</button>
+    <button onclick="continueLogin()">Continue</button>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById("loginForm");
+    const signupForm = document.getElementById("signupForm");
+    const forgotPopup = document.getElementById("forgotPopup");
+    const overlay = document.getElementById("overlay");
+
+    function toggleForm(form) {
+      if (form === "signup") {
+        loginForm.classList.add("hidden");
+        signupForm.classList.remove("hidden");
+      } else {
+        signupForm.classList.add("hidden");
+        loginForm.classList.remove("hidden");
+      }
+    }
+
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Login successful (demo)");
+    });
+
+    signupForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Sign up successful (demo)");
+    });
+
+    function openForgotPopup() {
+      forgotPopup.style.display = "block";
+      overlay.style.display = "block";
+    }
+
+    function closeForgotPopup() {
+      forgotPopup.style.display = "none";
+      overlay.style.display = "none";
+    }
+
+    function getOTP() {
+      alert("OTP Sent (demo)");
+    }
+
+    function continueLogin() {
+      alert("Login successful (demo)");
+      closeForgotPopup();
+    }
+
+    overlay.addEventListener("click", closeForgotPopup);
+  </script>
+</body>
+</html>

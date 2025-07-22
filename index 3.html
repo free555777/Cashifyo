@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cashifyo Profile Page</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f3fef5;
+    }
+
+    header {
+      background: white;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .back-btn {
+      font-size: 20px;
+      margin-right: 10px;
+      cursor: pointer;
+      color: #2e7d32;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 22px;
+      color: #2e7d32;
+    }
+
+    .profile-container {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .profile-pic {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: lightgray;
+      margin: 0 auto 10px;
+      border: 4px solid #c8facc;
+    }
+
+    .username, .userid {
+      font-size: 16px;
+      margin: 5px 0;
+      color: #444;
+    }
+
+    .box {
+      background: white;
+      margin: 20px auto;
+      padding: 15px;
+      border-radius: 12px;
+      width: 90%;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+    }
+
+    .box-title {
+      font-weight: bold;
+      font-size: 16px;
+      color: #2e7d32;
+    }
+
+    .box-value {
+      font-size: 22px;
+      margin-top: 5px;
+      color: #111;
+    }
+
+    .withdraw-btn {
+      display: block;
+      margin: 25px auto;
+      padding: 14px 28px;
+      background: #4caf50;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .withdraw-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: white;
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 0;
+      box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+    }
+
+    .nav-item {
+      text-align: center;
+      font-size: 14px;
+      color: #444;
+      cursor: pointer;
+    }
+
+    .nav-item i {
+      font-size: 20px;
+      display: block;
+      margin-bottom: 3px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="back-btn" onclick="goHome()">←</div>
+    <h2>Cashifyo</h2>
+  </header>
+
+  <!-- Profile Content -->
+  <div class="profile-container">
+    <div class="profile-pic"></div>
+    <div class="username">User Name: <strong>Rahul Kumar</strong></div>
+    <div class="userid">User ID: <strong>USR123456</strong></div>
+
+    <div class="box">
+      <div class="box-title">Total Income</div>
+      <div class="box-value">₹ 2,350</div>
+    </div>
+
+    <div class="box">
+      <div class="box-title">Total Points</div>
+      <div class="box-value">1175</div>
+    </div>
+
+    <button class="withdraw-btn">Withdraw Money</button>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <div class="bottom-nav">
+    <div class="nav-item" onclick="goHome()">
+      <i>🏠</i>Home
+    </div>
+    <div class="nav-item" onclick="goTeam()">
+      <i>👥</i>Team
+    </div>
+    <div class="nav-item" onclick="goProfile()">
+      <i>👤</i>Profile
+    </div>
+  </div>
+
+  <script>
+    function goHome() {
+      alert("Going to Home Page...");
+      // window.location.href = 'home.html'; // Uncomment for real project
+    }
+
+    function goTeam() {
+      alert("Going to Team Page...");
+    }
+
+    function goProfile() {
+      alert("You're already on Profile Page.");
+    }
+  </script>
+</body>
+</html>

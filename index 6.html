@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subscription 
+  </title>< 
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e6ffe6;
+      padding: 10px;
+      margin: 0;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+    }
+    .back-button {
+      font-size: 50px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    h2 {
+      margin: 0;
+    }
+    .subscription-boxes {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0;
+    }
+    .box {
+      width: 45%;
+      border-radius: 10px;
+      padding: 15px;
+      color: white;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .silver {
+      background-color: #c0c0c0;
+    }
+
+    .golden {
+      background-color: #ffd700;
+    }
+
+    .price {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .off {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: red;
+      font-weight: bold;
+      background: white;
+      padding: 3px 6px;
+      border-radius: 8px;
+    }
+
+    .details {
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    #amount-box {
+      margin: 20px auto;
+      width: 200px;
+      padding: 12px;
+      font-size: 18px;
+      text-align: center;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 128, 0, 0.3);
+      border: 2px solid green;
+    }
+
+    .upi-input {
+      width: 90%;
+      padding: 12px;
+      margin: 10px auto;
+      display: block;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      background-color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0, 128, 0, 0.2);
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .upi-input:focus {
+      outline: none;
+      box-shadow: 0 0 8px #00cc66;
+      border-color: #00cc66;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 14px 28px;
+      background-color: #00b33c;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #009933;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Cashifyo Subscription</h1>
+
+  <div class="subscription-boxes">
+    <div class="box silver" onclick="selectPlan(199)">
+      <div class="off">50% OFF</div>
+      <div class="price">₹199</div>
+      <div class="details">Silver Subscription<br>Ads Limit<br>25 Referrals/month</div>
+    </div>
+    <div class="box golden" onclick="selectPlan(299)">
+      <div class="off">60% OFF</div>
+      <div class="price">₹299</div>
+      <div class="details">Golden Subscription<br>No Ads<br>Unlimited Referrals/month</div>
+    </div>
+  </div>
+
+  <input type="text" id="amount-box" placeholder="Select a plan" readonly>
+
+  <input type="text" id="phonepe" placeholder="PhonePe UPI ID" class="upi-input">
+  <input type="text" id="gpay" placeholder="GPay UPI ID" class="upi-input">
+  <input type="text" id="paytm" placeholder="Paytm UPI ID" class="upi-input">
+  <input type="text" id="airtel" placeholder="Airtel Bank UPI ID" class="upi-input">
+
+  <button onclick="proceed()">Continue</button>
+
+  <script>
+    let selectedAmount = "";
+
+    function selectPlan(amount) {
+      selectedAmount = amount;
+      document.getElementById("amount-box").value = "₹" + amount;
+    }
+
+    function proceed() {
+      const phonepe = document.getElementById("phonepe").value.trim();
+      const gpay = document.getElementById("gpay").value.trim();
+      const paytm = document.getElementById("paytm").value.trim();
+      const airtel = document.getElementById("airtel").value.trim();
+
+      if (!selectedAmount) {
+        alert("Please select a subscription plan first.");
+        return;
+      }
+
+      if (phonepe || gpay || paytm || airtel) {
+        alert("Redirecting to UPI App for payment of ₹" + selectedAmount);
+        // Replace alert with real UPI redirection logic if integrating payment gateway
+      } else {
+        alert("Please enter at least one UPI ID.");
+      }
+    }
+  </script>
+
+</body>
+</html>
