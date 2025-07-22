@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cashifyo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Welcome to Cashifyo</h1>
+
+  <!-- Firebase Script -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDPoFt_4AePB6TWj_cNY4LkiIRk38Eu-g8",
+      authDomain: "cashifyo.firebaseapp.com",
+      projectId: "cashifyo",
+      storageBucket: "cashifyo.appspot.com",
+      messagingSenderId: "416197968490",
+      appId: "1:416197968490:web:91defa4123c55e9b45c013",
+      measurementId: "G-SLQPG4WSEQ"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
